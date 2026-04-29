@@ -2,20 +2,20 @@ import type { MenuItem } from "@/data/menu";
 
 export function MenuRow({ item, index }: { item: MenuItem; index: number }) {
   return (
-    <div className="grid grid-cols-12 gap-4 py-3 border-t border-foreground/15">
-      <div className="col-span-1 text-xs text-muted-foreground swiss-num pt-1">
+    <div className="grid grid-cols-12 gap-2 md:gap-4 py-3 border-t border-foreground/15">
+      <div className="col-span-1 text-[10px] md:text-xs text-muted-foreground swiss-num pt-1">
         {String(index + 1).padStart(2, "0")}
       </div>
       <div className="col-span-7 md:col-span-8">
-        <div className="font-bold uppercase tracking-tight text-[15px] leading-tight">{item.name}</div>
+        <div className="font-bold uppercase tracking-tight text-[14px] md:text-[15px] leading-tight">{item.name}</div>
         {item.desc && (
-          <div className="text-sm text-muted-foreground mt-1 leading-snug">{item.desc}</div>
+          <div className="text-[13px] md:text-sm text-muted-foreground mt-1 leading-snug">{item.desc}</div>
         )}
       </div>
-      <div className="col-span-4 md:col-span-3 text-right swiss-num font-medium">
+      <div className="col-span-4 md:col-span-3 text-right swiss-num font-medium text-sm md:text-base">
         {item.price && <div>{item.price}</div>}
         {item.prices && (
-          <div className="flex justify-end gap-4 text-sm">
+          <div className="flex flex-wrap justify-end gap-x-3 gap-y-1 text-xs md:text-sm">
             {item.prices.map((p) => (
               <div key={p.label + p.value}>
                 {p.label && <span className="text-muted-foreground text-[10px] uppercase tracking-widest mr-1">{p.label}</span>}
