@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VisitRouteImport } from './routes/visit'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as HoursRouteImport } from './routes/hours'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VisitRoute = VisitRouteImport.update({
+  id: '/visit',
+  path: '/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/hours': typeof HoursRoute
   '/menu': typeof MenuRoute
+  '/visit': typeof VisitRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/hours': typeof HoursRoute
   '/menu': typeof MenuRoute
+  '/visit': typeof VisitRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/hours': typeof HoursRoute
   '/menu': typeof MenuRoute
+  '/visit': typeof VisitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hours' | '/menu'
+  fullPaths: '/' | '/hours' | '/menu' | '/visit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hours' | '/menu'
-  id: '__root__' | '/' | '/hours' | '/menu'
+  to: '/' | '/hours' | '/menu' | '/visit'
+  id: '__root__' | '/' | '/hours' | '/menu' | '/visit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HoursRoute: typeof HoursRoute
   MenuRoute: typeof MenuRoute
+  VisitRoute: typeof VisitRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/visit': {
+      id: '/visit'
+      path: '/visit'
+      fullPath: '/visit'
+      preLoaderRoute: typeof VisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/menu': {
       id: '/menu'
       path: '/menu'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HoursRoute: HoursRoute,
   MenuRoute: MenuRoute,
+  VisitRoute: VisitRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
