@@ -31,9 +31,9 @@ export function MenuRow({ item, index }: { item: MenuItem; index: number }) {
 
 export function SectionHeader({ number, title }: { number: string; title: string }) {
   return (
-    <div className="grid grid-cols-12 gap-4 items-end pb-3 border-b-2 border-foreground">
-      <div className="col-span-1 text-xs text-muted-foreground swiss-num">{number}</div>
-      <h2 className="col-span-11 font-black uppercase tracking-tight text-2xl md:text-3xl leading-none">
+    <div className="grid grid-cols-12 gap-4 items-end pb-3 border-b-2 border-primary">
+      <div className="col-span-1 text-xs text-[var(--pop-orange)] swiss-num font-bold">{number}</div>
+      <h2 className="col-span-11 font-black uppercase tracking-tight text-2xl md:text-3xl leading-none text-primary">
         {title}
       </h2>
     </div>

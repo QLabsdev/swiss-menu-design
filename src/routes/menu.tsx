@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/SiteNav";
 import { MenuRow, SectionHeader } from "@/components/MenuBlock";
+import { Squiggle } from "@/components/Squiggle";
 import { foodSections, hotDrinks, coldDrinks } from "@/data/menu";
 
 export const Route = createFileRoute("/menu")({
@@ -19,14 +20,15 @@ function MenuPage() {
       <SiteNav />
       <main className="flex-1 mx-auto max-w-[1400px] px-6 md:px-10 py-12 md:py-20 w-full">
         {/* Title */}
-        <div className="grid grid-cols-12 gap-6 pb-12 border-b-2 border-foreground">
+        <div className="grid grid-cols-12 gap-6 pb-12 border-b-2 border-foreground relative">
           <div className="col-span-12 md:col-span-8">
             <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Section 02 — The Menu</div>
-            <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.85] text-[clamp(3rem,9vw,9rem)]">
+            <h1 className="font-black uppercase tracking-[-0.04em] leading-[0.85] text-[clamp(3rem,9vw,9rem)] text-primary">
               Menu
             </h1>
           </div>
-          <div className="col-span-12 md:col-span-4 flex flex-col justify-end">
+          <div className="col-span-12 md:col-span-4 flex flex-col justify-end gap-4">
+            <Squiggle className="w-full h-auto max-h-32" />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Prices in South African Rand (R). Sizes: <strong className="text-foreground">R</strong> Regular · <strong className="text-foreground">L</strong> Large.
             </p>
